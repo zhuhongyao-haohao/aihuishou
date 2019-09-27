@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+//引入生产者
+import { Provider } from "react-redux";
+//引入公共状态
+import store from "@store";
+//引入路由根组件,路由
+import {HashRouter as Router,Route} from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//根路径时到App页面,并且给到生产者
+ReactDOM.render(
+    <Provider store={store}>
+        <Router>
+            <Route path="/" component={App}/>
+        </Router>
+    </Provider>,
+     document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
